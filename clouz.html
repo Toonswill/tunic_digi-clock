@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .c-code {
+            font-family: monospace;
+            background-color: #f1f1f1;
+            padding: 10px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <pre>
+        <code class="c-code">
+            #include &lt;stdio.h&gt;
+            #include &lt;stdlib.h&gt;
+            #include &lt;unistd.h&gt;
+
+            int main()
+            {
+                int h, m, s;
+                int d = 1000; // delay of 1000 milliseconds
+                printf("Set time: \n");
+                scanf("%d%d%d", &h, &m, &s);
+
+                if (h > 12 || m > 60 || s > 60)
+                {
+                    printf("ERROR! Invalid time input.\n");
+                    exit(0);
+                }
+
+                while (1) // infinite loop
+                {
+                    s++;
+                    if (s > 59)
+                    {
+                        m++;
+                        s = 0;
+                    }
+                    if (m > 59)
+                    {
+                        h++;
+                        m = 0;
+                    }
+                    if (h > 12)
+                    {
+                        h = 1;
+                    }
+
+                    printf("\nClock: ");
+                    printf("\n%02d:%02d:%02d", h, m, s); // format: 00:00:00
+                    sleep(1);                            // delay in seconds
+                    system("clear");                      // clear screen
+                }
+
+                return 0; // optional, since main is declared as int
+            }
+        </code>
+    </pre>
+</body>
+</html>
+
